@@ -4,7 +4,7 @@
   <title><![CDATA[Statistics Notes]]></title>
   <link href="http://taohill.github.io/atom.xml" rel="self"/>
   <link href="http://taohill.github.io/"/>
-  <updated>2013-06-13T00:53:04+08:00</updated>
+  <updated>2013-06-13T01:01:00+08:00</updated>
   <id>http://taohill.github.io/</id>
   <author>
     <name><![CDATA[Hill Tao]]></name>
@@ -18,16 +18,10 @@
     <link href="http://taohill.github.io/blog/2013/06/13/change-ssh-keys/"/>
     <updated>2013-06-13T00:51:00+08:00</updated>
     <id>http://taohill.github.io/blog/2013/06/13/change-ssh-keys</id>
-    <content type="html"><![CDATA[<p>github使用SSH与客户端连接。如果是单用户（first），生成密钥对后，将公钥保存至github，每次连接时SSH客户端发送 本地私钥（默认~/.ssh/id_rsa）到服务端验证。单用户情况下，连接的服务器上保存的公钥和发送的私钥自然是配对的。但是如果是多用户 （first，second），我们在连接到second的帐号时，second保存的是自己的公钥，但是SSH客户端依然发送默认私钥，即first的 私钥，那么这个验证自然无法通过。不过，要实现多帐号下的SSH key切换在客户端做一些配置即可。
-首先cd到~/.ssh 使用 ssh-keygen -t -rsa -C ‘second@mail.com’ 生成新的SSH key：id_rsa_second，生成完后将新的SSH public key添加到github。
-ssh-keygen -t rsa -C &lsquo;<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#115;&#101;&#x63;&#x6f;&#110;&#100;&#x40;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x73;&#101;&#99;&#x6f;&#x6e;&#100;&#64;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a>&rsquo;
-默认SSH只会读取id_rsa，所以为了让SSH识别新的私钥，需要将其添加到SSH agent
-ssh-add ～/.ssh/id_rsa_second
-该命令如果报错：Could not open a connection to your authentication agent.无法连接到ssh agent，可执行ssh-agent bash命令后再执行ssh-add命令。
-完成以上步骤后在~/.ssh目录创建config文件，该文件用于配置私钥对应的服务器。内容如下：</p>
+    <content type="html"><![CDATA[<p>~/.ss/config :</p>
 
 <pre><code># Default github user(first@mail.com)
-Host github.com
+Host github-first
   HostName github.com
   User git
   IdentityFile C:/Users/username/.ssh/id_rsa
