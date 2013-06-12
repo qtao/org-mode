@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://taohill.github.io/atom.xml" rel="self"/>
   <link href="http://taohill.github.io/"/>
-  <updated>2013-06-12T13:43:13+08:00</updated>
+  <updated>2013-06-12T14:36:38+08:00</updated>
   <id>http://taohill.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[fatal: remote origin already exists]]></title>
+    <link href="http://taohill.github.io/blog/2013/06/12/fatal-remote-origin-already-exists/"/>
+    <updated>2013-06-12T14:34:00+08:00</updated>
+    <id>http://taohill.github.io/blog/2013/06/12/fatal-remote-origin-already-exists</id>
+    <content type="html"><![CDATA[<p>D:\Github\taohill_deploy.git> git remote -v
+origin
+upstream</p>
+
+<p>D:\Github\taohill_deploy.git> git remote set-url origin git@github.com:taohill/taohill.github.com.git
+D:\Github\taohill_deploy.git> git remote -v
+origin  git@github.com:taohill/taohill.github.com.git (fetch)
+origin  git@github.com:taohill/taohill.github.com.git (push)
+upstream</p>
+
+<p>D:\Github\taohill_deploy.git> notepad .\config
+[core]</p>
+
+<pre><code>repositoryformatversion = 0
+filemode = false
+bare = false
+logallrefupdates = true
+symlinks = false
+ignorecase = true
+hideDotFiles = dotGitOnly
+</code></pre>
+
+<p>[remote &ldquo;origin&rdquo;]</p>
+
+<pre><code>url = git@github.com:taohill/taohill.github.com.git
+</code></pre>
+
+<p>[branch &ldquo;master&rdquo;]</p>
+
+<pre><code>remote = origin
+merge = refs/heads/master
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello world]]></title>
