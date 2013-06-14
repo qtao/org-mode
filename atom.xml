@@ -4,7 +4,7 @@
   <title><![CDATA[Statistics Notes]]></title>
   <link href="http://taohill.github.io/atom.xml" rel="self"/>
   <link href="http://taohill.github.io/"/>
-  <updated>2013-06-15T01:08:01+08:00</updated>
+  <updated>2013-06-15T01:12:08+08:00</updated>
   <id>http://taohill.github.io/</id>
   <author>
     <name><![CDATA[Hill Tao]]></name>
@@ -18,7 +18,7 @@
     <link href="http://taohill.github.io/blog/2013/06/15/equation-problems-office-2013/"/>
     <updated>2013-06-15T00:32:00+08:00</updated>
     <id>http://taohill.github.io/blog/2013/06/15/equation-problems-office-2013</id>
-    <content type="html"><![CDATA[<h1>Question</h1>
+    <content type="html"><![CDATA[<h3>Question</h3>
 
 <p>MS Word 2013 crashes when using equations. The equation editor in Word 2013 does not respond.
 It just goes blank &hellip;&hellip;</p>
@@ -30,8 +30,10 @@ It just goes blank &hellip;&hellip;</p>
 
 <p>To solve the problem, download and install Microsoft Office Compatibility Pack &hellip;&hellip;</p>
 
-<pre><code>http://www.microsoft.com/en-us/download/details.aspx?id=3
+<pre><code>http://www.microsoft.com/en-us/download/details.aspx?id=3  
 </code></pre>
+
+<p>Done!</p>
 ]]></content>
   </entry>
   
