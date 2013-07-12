@@ -15,12 +15,18 @@
         <lastmod>2013-07-12T11:45:14+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://taohill.github.io/blog/2013-07-12-emacs-config-file-for-octopress-blog.html
+        </loc>
+        <lastmod>2013-07-12T15:30:22+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://taohill.github.io/blog/archives/</loc>
-        <lastmod>2013-07-12T11:45:14+08:00</lastmod>
+        <lastmod>2013-07-12T15:30:22+08:00</lastmod>
     </url>
     <url>
         <loc>http://taohill.github.io/</loc>
-        <lastmod>2013-07-12T11:45:14+08:00</lastmod>
+        <lastmod>2013-07-12T15:30:22+08:00</lastmod>
     </url>
     <url>
         <loc>http://taohill.github.io/robots.txt</loc>
