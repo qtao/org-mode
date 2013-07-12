@@ -7,7 +7,7 @@
 #+PROPERTY: session *R*
 #+PROPERTY: results silent
 
-* A histogram plot
+* A simple scatter plot
 
 Plots get a little more complicated.  First we make something to plot
 (simulated regression data).
@@ -33,7 +33,7 @@ you want to see what the actual code chunk was).
   abline(out1, lwd=2, col="red4")
 #+end_src
 
-#+CAPTION: A histgrame plot
+#+CAPTION: A scatter plot
 #+LABEL: fig:hist_01
 #+attr_html: :width 400px
 [[file:./images/fig1.png]]
