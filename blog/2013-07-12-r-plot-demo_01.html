@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Change SSH Keys - Statistics Notes</title>
+  <title>R plot demo_01 - Statistics Notes</title>
   <meta name="author" content="Hill Tao">
 
   
-  <meta name="description" content="~/.ss/config : # Default github user(first@mail.com)
-Host github-first HostName github.com User git IdentityFile C:/Users/username/.ssh/id_rsa
-# &hellip;">
+  <meta name="description" content="A histogram plot Plots get a little more complicated. First we make something to plot
+(simulated regression data). n &lt;- 50
+x &lt;- seq(1, n)
+a. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@ Host github-first HostName github.com User git IdentityFile C:/Users/username/.s
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://taohill.github.io/blog/2013-06-13-change-ssh-keys.html">
+  <link rel="canonical" href="http://taohill.github.io/blog/2013-07-12-r-plot-demo_01.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Statistics Notes" type="application/atom+xml">
@@ -70,7 +71,7 @@ Host github-first HostName github.com User git IdentityFile C:/Users/username/.s
   
   <header>
     
-      <h1 class="entry-title">Change SSH Keys</h1>
+      <h1 class="entry-title">R Plot Demo_01</h1>
     
     
       <p class="meta">
@@ -86,26 +87,58 @@ Host github-first HostName github.com User git IdentityFile C:/Users/username/.s
   
 
 
-<time datetime="2013-06-13T00:51:00+08:00" pubdate data-updated="true">Jun 13<span>th</span>, 2013</time>
+<time datetime="2013-07-12T00:00:00+08:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>~/.ss/config :</p>
+<div class="entry-content"><div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">A histogram plot</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Plots get a little more complicated.  First we make something to plot
+(simulated regression data).
+</p>
 
-<pre><code># Default github user(first@mail.com)
-Host github-first
-  HostName github.com
-  User git
-  IdentityFile C:/Users/username/.ssh/id_rsa
-# second user(second@mail.com)
-Host github-second
-  HostName github.com
-  User git
-  IdentityFile C:/Users/username/.ssh/id_rsa_second
-</code></pre>
+<div class="org-src-container">
+
+<pre class="src src-R" id="reg">n <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">50</span>
+x <span style="color: #00ff00;">&lt;-</span> <span style="color: #ffaa00;">seq</span><span style="color: #ffaa00;">(</span><span style="color: #ff7f50;">1</span>, n<span style="color: #ffaa00;">)</span>
+a.true <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">3</span>
+b.true <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">1.5</span>
+y.true <span style="color: #00ff00;">&lt;-</span> a.true <span style="color: #00ff00;">+</span> b.true * x
+s.true <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">17.3</span>
+<span style="color: #ffaa00;">set.seed</span><span style="color: #ffaa00;">(</span><span style="color: #ff7f50;">987</span><span style="color: #ffaa00;">)</span>
+y <span style="color: #00ff00;">&lt;-</span> y.true <span style="color: #00ff00;">+</span> s.true * <span style="color: #ffaa00;">rnorm</span><span style="color: #ffaa00;">(</span>n<span style="color: #ffaa00;">)</span>
+out1 <span style="color: #00ff00;">&lt;-</span> <span style="color: #ffaa00;">lm</span><span style="color: #ffaa00;">(</span>y ~ x<span style="color: #ffaa00;">)</span>
+<span style="color: #ffaa00;">summary</span><span style="color: #ffaa00;">(</span>out1<span style="color: #ffaa00;">)</span>
+</pre>
+</div>
+<p>
+(for once we won&#8217;t show the code chunk itself, look at <code>foo.org</code> if
+you want to see what the actual code chunk was).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-R"><span style="color: #ffaa00;">plot</span><span style="color: #ffaa00;">(</span>x, y, pch<span style="color: #00ff00;">=</span><span style="color: #ff7f50;">19</span>, col<span style="color: #00ff00;">=</span><span style="color: #ffff00;">"green4"</span><span style="color: #ffaa00;">)</span>
+<span style="color: #ffaa00;">abline</span><span style="color: #ffaa00;">(</span>out1, lwd<span style="color: #00ff00;">=</span><span style="color: #ff7f50;">2</span>, col<span style="color: #00ff00;">=</span><span style="color: #ffff00;">"red4"</span><span style="color: #ffaa00;">)</span>
+</pre>
+</div>
+
+
+<div id="fig:hist_01" class="figure">
+<p><img src="./images/fig1.png" width="400px" alt="fig1.png"/></p>
+<p>A histgrame plot</p>
+</div>
+
+<p>
+<!-- more -->
+</p>
+</div>
+</div>
 </div>
 
 
@@ -128,7 +161,7 @@ Host github-second
   
 
 
-<time datetime="2013-06-13T00:51:00+08:00" pubdate data-updated="true">Jun 13<span>th</span>, 2013</time>
+<time datetime="2013-07-12T00:00:00+08:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
       
 
 
@@ -143,10 +176,8 @@ Host github-second
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013-06-12-fatal-remote-origin-already-exists.html" title="Previous Post: fatal: remote origin already exists">&laquo; fatal: remote origin already exists</a>
+        <a class="basic-alignment left" href="/blog/2013-07-12-emacs-config-file-for-octopress-blog.html" title="Previous Post: Emacs config file for Octopress blog">&laquo; Emacs config file for Octopress blog</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013-06-15-equation-problems-office-2013.html" title="Next Post: Equation Problems Office 2013">Equation Problems Office 2013 &raquo;</a>
       
     </p>
   </footer>
