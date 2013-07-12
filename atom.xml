@@ -4,7 +4,7 @@
   <title><![CDATA[Statistics Notes]]></title>
   <link href="http://taohill.github.io/atom.xml" rel="self"/>
   <link href="http://taohill.github.io/"/>
-  <updated>2013-06-15T01:22:15+08:00</updated>
+  <updated>2013-07-12T12:47:20+08:00</updated>
   <id>http://taohill.github.io/</id>
   <author>
     <name><![CDATA[Hill Tao]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Equation Problems Office 2013]]></title>
-    <link href="http://taohill.github.io/blog/2013/06/15/equation-problems-office-2013/"/>
+    <link href="http://taohill.github.io/blog/2013-06-15-equation-problems-office-2013.html"/>
     <updated>2013-06-15T00:32:00+08:00</updated>
-    <id>http://taohill.github.io/blog/2013/06/15/equation-problems-office-2013</id>
+    <id>http://taohill.github.io/blog/equation-problems-office-2013</id>
     <content type="html"><![CDATA[<h3>Question</h3>
 
 <p>MS Word 2013 crashes when using equations.
@@ -43,9 +43,9 @@ It just goes blank &hellip;&hellip;</p>
   
   <entry>
     <title type="html"><![CDATA[Change SSH Keys]]></title>
-    <link href="http://taohill.github.io/blog/2013/06/13/change-ssh-keys/"/>
+    <link href="http://taohill.github.io/blog/2013-06-13-change-ssh-keys.html"/>
     <updated>2013-06-13T00:51:00+08:00</updated>
-    <id>http://taohill.github.io/blog/2013/06/13/change-ssh-keys</id>
+    <id>http://taohill.github.io/blog/change-ssh-keys</id>
     <content type="html"><![CDATA[<p>~/.ss/config :</p>
 
 <pre><code># Default github user(first@mail.com)
@@ -64,9 +64,9 @@ Host github-second
   
   <entry>
     <title type="html"><![CDATA[fatal: remote origin already exists]]></title>
-    <link href="http://taohill.github.io/blog/2013/06/12/fatal-remote-origin-already-exists/"/>
+    <link href="http://taohill.github.io/blog/2013-06-12-fatal-remote-origin-already-exists.html"/>
     <updated>2013-06-12T14:34:00+08:00</updated>
-    <id>http://taohill.github.io/blog/2013/06/12/fatal-remote-origin-already-exists</id>
+    <id>http://taohill.github.io/blog/fatal-remote-origin-already-exists</id>
     <content type="html"><![CDATA[<p>fatal: remote origin already exists</p>
 
 <pre><code>D:\Github\taohill&gt; git remote -v
@@ -118,15 +118,6 @@ D:\Github\taohill\_deploy\.git&gt; notepad .\config
     remote = origin
     merge = refs/heads/master
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello world]]></title>
-    <link href="http://taohill.github.io/blog/2013/06/12/hello-world/"/>
-    <updated>2013-06-12T13:42:00+08:00</updated>
-    <id>http://taohill.github.io/blog/2013/06/12/hello-world</id>
-    <content type="html"><![CDATA[<p>My blog test.</p>
 ]]></content>
   </entry>
   
