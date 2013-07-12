@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Statistics Notes]]></title>
+  <link href="http://taohill.github.io/atom.xml" rel="self"/>
+  <link href="http://taohill.github.io/"/>
+  <updated>2013-06-15T01:22:15+08:00</updated>
+  <id>http://taohill.github.io/</id>
+  <author>
+    <name><![CDATA[Hill Tao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Equation Problems Office 2013]]></title>
+    <link href="http://taohill.github.io/blog/2013/06/15/equation-problems-office-2013/"/>
+    <updated>2013-06-15T00:32:00+08:00</updated>
+    <id>http://taohill.github.io/blog/2013/06/15/equation-problems-office-2013</id>
+    <content type="html"><![CDATA[<h3>Question</h3>
+
+<p>MS Word 2013 crashes when using equations.
+The equation editor in Word 2013 does not respond.
+It just goes blank &hellip;&hellip;</p>
+
+<p>Figure 1. Equation Problems Office 2013.
+<img class="left" src="http://taohill.github.io/images/mso_eq1.jpg" width="700" height="420" title="Figure #01" alt="Equation Problems in word 2013"></p>
+
+<h3>Answer</h3>
+
+<ul>
+<li><p>To solve the problem, download and install Microsoft Office Compatibility Pack &hellip;&hellip;</p>
+
+<p>  <a href="http://www.microsoft.com/en-us/download/details.aspx?id=3">http://www.microsoft.com/en-us/download/details.aspx?id=3</a></p></li>
+</ul>
+
+
+<p>Done! <br/>
+~~ Tao</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Change SSH Keys]]></title>
+    <link href="http://taohill.github.io/blog/2013/06/13/change-ssh-keys/"/>
+    <updated>2013-06-13T00:51:00+08:00</updated>
+    <id>http://taohill.github.io/blog/2013/06/13/change-ssh-keys</id>
+    <content type="html"><![CDATA[<p>~/.ss/config :</p>
+
+<pre><code># Default github user(first@mail.com)
+Host github-first
+  HostName github.com
+  User git
+  IdentityFile C:/Users/username/.ssh/id_rsa
+# second user(second@mail.com)
+Host github-second
+  HostName github.com
+  User git
+  IdentityFile C:/Users/username/.ssh/id_rsa_second
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fatal: remote origin already exists]]></title>
+    <link href="http://taohill.github.io/blog/2013/06/12/fatal-remote-origin-already-exists/"/>
+    <updated>2013-06-12T14:34:00+08:00</updated>
+    <id>http://taohill.github.io/blog/2013/06/12/fatal-remote-origin-already-exists</id>
+    <content type="html"><![CDATA[<p>fatal: remote origin already exists</p>
+
+<pre><code>D:\Github\taohill&gt; git remote -v
+octopress       git://github.com/imathis/octopress.git (fetch)
+octopress       git://github.com/imathis/octopress.git (push)
+origin  git@github.com:taohill/taohill.github.com.git (fetch)
+origin  git@github.com:taohill/taohill.github.com.git (push)
+upstream
+
+D:\Github\taohill&gt; notepad .\.git\config
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[remote "octopress"]
+        url = git://github.com/imathis/octopress.git
+        fetch = +refs/heads/*:refs/remotes/octopress/*
+[branch "source"]
+        remote = origin
+        merge = refs/heads/master
+[remote "origin"]
+        url = git@github.com:taohill/taohill.github.com.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+
+
+D:\Github\taohill\_deploy\.git&gt; git remote -v
+origin
+upstream
+
+D:\Github\taohill\_deploy\.git&gt; git remote set-url origin git@github.com:taohill/taohill.github.com.git
+D:\Github\taohill\_deploy\.git&gt; git remote -v
+origin  git@github.com:taohill/taohill.github.com.git (fetch)
+origin  git@github.com:taohill/taohill.github.com.git (push)
+upstream
+
+D:\Github\taohill\_deploy\.git&gt; notepad .\config
+[core]
+    repositoryformatversion = 0
+    filemode = false
+    bare = false
+    logallrefupdates = true
+    symlinks = false
+    ignorecase = true
+    hideDotFiles = dotGitOnly
+[remote "origin"]
+    url = git@github.com:taohill/taohill.github.com.git
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello world]]></title>
+    <link href="http://taohill.github.io/blog/2013/06/12/hello-world/"/>
+    <updated>2013-06-12T13:42:00+08:00</updated>
+    <id>http://taohill.github.io/blog/2013/06/12/hello-world</id>
+    <content type="html"><![CDATA[<p>My blog test.</p>
+]]></content>
+  </entry>
+  
+</feed>
