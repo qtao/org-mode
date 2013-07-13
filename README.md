@@ -3,4 +3,4 @@
 
 org-mode notes
 
-我是ORG学习散记。
+我的ORG学习散记。
