@@ -1,0 +1,214 @@
+﻿D:\Github\book\org-mode>git push
+Warning: Permanently added 'github.com,204.232.175.90' (RSA) to the list of known hosts.
+Counting objects: 354, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (147/147), done.
+Writing objects: 100% (353/353), 366.66 KiB, done.
+Total 353 (delta 141), reused 350 (delta 140)
+To git@github-qtao:qtao/org-mode.git
+   cf6ad75..ba861ed  HEAD -> master
+
+D:\Github\book\org-mode>
+
+
+
+Git Push(向远程Github提交本地代码)
+$ git push git@github.com:hepusheng/linux-2.6.11-study-note.git master // 把本地仓库提交到远程仓库的master分支中
+
+
+$ git remote add origin git@github.com:hepusheng/linux-2.6.11-study-note.git
+$ git push -u origin master
+
+
+这两个操作是等价的，第二个操作的第一行的意思是添加一个标记，让origin指向git@github.com:hepusheng/linux- 2.6.11-study-note.git，也就是说你操作origin的时候，实际上就是在操作 git@github.com:hepusheng/linux-2.6.11-study-note.git。
+? ? 默认情况下这条语句等价于提交本地的master仓库到远程仓库，并作为远程的master分支。
+
+
+在向远程提交代码时出现了错误：
+1.error:failed to push some refs to ...
+当要push代码到git时，出现提示：
+error:failed to push some refs to ...
+Dealing with “non-fast-forward” errors
+From time to time you may encounter this error while pushing:
+$ git push origin master?
+To ../remote/?
+?! [rejected] ? ? ? ?master -> master (non-fast forward)?
+error: failed to push some refs to '../remote/'?
+To prevent you from losing history, non-fast-forward updates were rejected
+Merge the remote changes before pushing again. ?See the 'non-fast forward'
+section of 'git push --help' for details.
+?
+问题（Non-fast-forward）的出现原因在于：git仓库中已经有一部分代码，所以它不允许你直接把你的代码覆盖上去，特别对于在 Github上新建版本仓库时，因为它为了增加其它人对用户提交的代码的可读性时，默认是要求新建一个README.md文件，和系统会生 成.gitignore 文件。所以在push化码到远程仓库时，因为我们本地仓库中没有类似于README.md或.gitignore 等文件，这样就是提示（Non-fast-forward). 有2个方式可以解决这个问题：
+?
+强推，即利用强覆盖方式用你本地的代码替代git仓库内的内容，这种方式不建议使用。
+git push -f
+?
+2. 先把git的东西fetch到你本地然后merge后再push
+$ git fetch
+$ git merge
+这2句命令等价于
+$ git pull?
+可是，这时候又出现了如下的问题：
+上面出现的 [branch "master"]是需要明确(.git/config)如下的内容
+[branch "master"]
+? ? remote = origin
+? ? merge = refs/heads/master
+这等于告诉git2件事:
+1，当你处于master branch, 默认的remote就是origin。
+2，当你在master branch上使用git pull时，没有指定remote和branch，那么git就会采用默认的remote（也就是origin）来merge在master branch上所有的改变
+如果不想或者不会编辑config文件的话，可以在bush上输入如下命令行：
+$ git config branch.master.remote origin?
+$ git config branch.master.merge refs/heads/master?
+之后再重新git pull下。最后git push你的代码，到此步顺利完成时，则可以在Github上看到你新建的仓库以及你提交到仓库中文件了,OK。 
+
+来自 <http://blog.csdn.net/hepusheng/article/details/8241936> 
+
+Git比其他同类软件多出个暂存区域的概念，git add不是将文件置于版本控制之下，而是将文件添加到暂存区域（index）。所有新增的和修改过的文件都要执行git add命令添加后才能commit。commit时是不理会工作区的文件的，而是根据index为每个目录生成tree对象，然后再创建commit对象 指向它。 
+
+这样做的好处是你可以通过git add -i命令（http://book.git-scm.com/4_interactive_adding.html）随意修改要加入暂存区域的文件。比如你一次修改了3个文件，要分成3个commit提交，那么每次添加一个文件到暂存区域然后commit就可以了。又或者，刚修改错了一个文件，可以从暂存区域里取出上次git add后的版本。 
+
+来自 <http://www.zhihu.com/question/19946553> 
+
+这是一个 git 特意实现的功能/缺陷（feature or bug）。
+
+换句话说，对喜欢的人来说它是个功能，不喜欢的人来说它是个缺陷。
+
+让我们来比较以下下列命令 hg 跟 git 的异同：
+
+单独提交文件 a.c, b.c：
+	hg ci a.c b.c -m "commit ab"
+	git stage a.c b.c
+	git commit -m "commit ab"
+提交所有修改过的文件：
+	hg ci -m "commit all"
+	git commit -a -m "commit all"
+
+来自 <http://www.zhihu.com/question/19946553> 
+
+
+
+
+D:\Github\book\org-mode>git add org
+
+D:\Github\book\org-mode>git add emacs.png
+
+D:\Github\book\org-mode>git add README.md
+
+D:\Github\book\org-mode>git commit -m "add three files"
+[master e8a7f89] add three files
+ 3 files changed, 389 insertions(+)
+ create mode 100644 emacs.png
+ create mode 100644 org/Org_Manual.org
+
+D:\Github\book\org-mode>
+D:\Github\book\org-mode>git push
+Warning: Permanently added 'github.com,204.232.175.90' (RSA) to the list of know
+n hosts.
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 4.64 KiB, done.
+Total 5 (delta 1), reused 0 (delta 0)
+To git@github-qtao:qtao/org-mode.git
+   0c11ff2..e8a7f89  HEAD -> master
+
+D:\Github\book\org-mode>
+
+D:\Github\book\org-mode>git commit -m "更新说明"
+[master 6ec76c3] 更新说明
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Warning: Your console font probably doesn't support Unicode. If you experience s
+trange characters in the output, consider switching to a TrueType font such as L
+ucida Console!
+
+D:\Github\book\org-mode>git commit -m "input chinese"
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    assets/jwplayer/glow/controlbar/background.png
+#       deleted:    assets/jwplayer/glow/controlbar/blankButton.png
+#       deleted:    assets/jwplayer/glow/controlbar/divider.png
+#       deleted:    assets/jwplayer/glow/controlbar/fullscreenButton.png
+
+
+git rm assets
+git rm blog
+git rm images
+git rm javascripts
+git rm stylesheets
+git rm atom.xml
+git rm favicon.png
+git rm index.html
+git rm robots.txt
+git rm sitemap.xml
+
+git commit -m "Delete five Dirs and five files"
+
+D:\Github\book\org-mode>git commit -m "Delete five Dirs and five files"
+[master d59c8c9] Delete five Dirs and five files
+ 5 files changed, 978 deletions(-)
+ delete mode 100644 atom.xml
+ delete mode 100644 favicon.png
+ delete mode 100644 index.html
+ delete mode 100644 robots.txt
+ delete mode 100644 sitemap.xml
+
+git push
+
+D:\Github\book\org-mode>git push
+Warning: Permanently added 'github.com,204.232.175.90' (RSA) to the list of kn
+n hosts.
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 246 bytes, done.
+Total 2 (delta 1), reused 0 (delta 0)
+To git@github-qtao:qtao/org-mode.git
+   a1f52ea..d59c8c9  HEAD -> master
+
+How to remove a directory in my GitHub repository?
+ou could checkout 'master' with both directories; 
+git rm -r one-of-the-directoriesgit commit -m "Remove duplicated directory"git push origin master
+yes?
+
+来自 <http://stackoverflow.com/questions/6313126/how-to-remove-a-directory-in-my-github-repository> 
+
+git rm -r assets
+git rm -r blog
+git rm -r images
+git rm -r javascripts
+git rm -r stylesheets
+
+git commit -m "Delete five Dirs"
+D:\Github\book\org-mode>
+D:\Github\book\org-mode>git commit -m "Delete five Dirs"
+[master 08be485] Delete five Dirs
+ 66 files changed, 2513 deletions(-)
+ delete mode 100644 assets/jwplayer/glow/controlbar/background.png
+ delete mode 100644 assets/jwplayer/glow/controlbar/blankButton.png
+ delete mode 100644 assets/jwplayer/glow/controlbar/divider.png
+ ......
+ delete mode 100644 javascripts/pinboard.js
+ delete mode 100644 javascripts/twitter.js
+ delete mode 100644 stylesheets/screen.css
+
+git push
+D:\Github\book\org-mode>git push
+Warning: Permanently added 'github.com,204.232.175.90' (RSA) to the list of know
+n hosts.
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 298 bytes, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To git@github-qtao:qtao/org-mode.git
+   d59c8c9..08be485  HEAD -> master
+
+D:\Github\book\org-mode>
+

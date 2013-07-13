@@ -1,0 +1,52 @@
+﻿** 进入：https://github.com/qtao 
+** 新建一个：repositories，例如：org-mode
+** 在widows中操作
+D:\Github\book>git clone https://github.com/qtao/org-mode
+Cloning into 'org-mode'...
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+D:\Github\book\org-mode>dir /w
+README.md
+D:\Github\book\org-mode>git init
+Reinitialized existing Git repository in D:/Github/book/org-mode/.git/
+D:\Github\book\org-mode>
+
+
+** 进入D:\Github\book\org-mode\.git目录，修改config文件
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+        hideDotFiles = dotGitOnly
+[remote "origin"]
+        url = https://github.com/qtao/org-mode
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
+
+修改为：
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+        hideDotFiles = dotGitOnly
+[remote "origin"]
+        url = git@github-taohill:taohill/org-mode.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
+
+然后用
+git push
+git pull 
+更新网上代码仓库
+
