@@ -1,0 +1,387 @@
+#+Title: The Org Manul
+#+Author: Tao
+#+Email: tao@my.com
+
+* Introduction
+**  Summary
+Org keeps simple things simple.
+- an outline extension with visibility cycling and structure editing
+- an ASCII system and table editor for taking structured notes
+- a TODO list editor
+- a full agenda and planner with deadlines and work scheduling
+- an environment in which to implement David Allenfls GTD system
+- a simple hypertext system, with HTML and LATEX export
+- a publishing tool to create a set of interlinked web pages
+- an environment for literate programming
+
+Website: http://orgmode.org
+
+**  Installation
+Org is part of recent distributions of GNU Emacs, but  we strongly recommend to stick to a single installation method.
+- Downloading Org as an archive from Org website.
+- Make sure you set the load-path correctly in your ".emacs" config file.
+
+#+Begin_src emacs-lisp
+  (add-to-list 'load-path "~/path/to/orgdir/lisp")
+#+End_src
+
+The downloaded archive contains contributed libraries that are not included in Emacs.
+If you want to use them, add the ‘contrib’ directory to your load-path:
+
+#+Begin_src emacs-lisp
+  (add-to-list 'load-path "~/path/to/orgdir/contrib/lisp" t)
+#+End_src
+
+**  Activation
+Since Emacs 22.2, files with the ".org" extension use Org mode by default.
+The flowing four Org commands should be accessible through global keys in .emacs:
+
+#+Begin_src emacs-lisp
+  (global-set-key "\C-cl" 'org-store-link)
+  (global-set-key "\C-cc" 'org-capture)
+  (global-set-key "\C-ca" 'org-agenda)
+  (global-set-key "\C-cb" 'org-iswitchb)
+#+End_src
+
+**  Feedback
+Org mailing list emacs-orgmode@gnu.org.
+
+**  Typesetting conventions used in this manual
+- Org mainly uses three types of keywords: TODO keywords, tags and property names.
+- Moreover, Org uses option keywords (like #+TITLE to set the title) and environment keywords (like #+BEGIN_{_}HTML to start a HTML environment).
+- The manual suggests two global keybindings: C-c a for org-agenda and C-c c for orgcapture.
+
+* Document structure
+**  Outlines
+Outlines show/hide command is bound to the TAB key.
+
+**  Headlines
+The headlines in Org start with one or
+more stars, on the left margin12. For example:
+
+#+Begin_src org
+  * Top level headline
+  ** Second level
+  *** 3rd level
+    some text
+
+  * Another top level headline
+#+End_src
+
+**  Visibility cycling
+*** Global and local cycling
+Org uses just two commands,bound to TAB and S-TAB to change the visibility in the buffer.
+- TAB =(org-cycle)=: Subtree cycling: Rotate current subtree among the states
+- C-U TAB =(org-global-cycle)=: Rotate the entire buffer among: OVERVIEW, CONTENTS and SHOW ALL.
+- C-u C-u C-u TAB =(show-all)=: Show all, including drawers.
+- C-c C-x b =(org-tree-to-indirect-buffer)=: Show the current subtree in an indirect buffer5. With a numeric prefix argument N, go up to level N and then take that tree.
+- C-c C-x v =(org-copy-visible)=: Copy the visible text in the region into the kill ring.
+
+
+*** Initial visibility
+When Emacs first visits an Org file, the global state is set to OVERVIEW. This can be configured through the following lines anywhere in the buffer:
+#+Begin_src org
+  #+STARTUP: overview
+  #+STARTUP: content
+  #+STARTUP: showall
+  #+STARTUP: showeverything
+#+End_src
+
+**  Motion
+The following commands jump to other headlines in the buffer.
+- C-c C-n : Next heading.
+- C-c C-p : Previous heading.
+- C-c C-f : Next heading same level.
+- C-c C-b : Previous heading same level.
+- C-c C-u : Backward to higher level heading.
+- C-c C-j : Jump to a different place without changing the current outline visibility.
+
+**  Structure editing
+- M-RET : Insert a new heading/item with the same level than the one at point. 
+- C-RET : Just like M-RET, except when adding a new heading below the current heading
+- M-LEFT : Promote current heading by one level.
+- M-h : Mark the element at point. Hitting repeatedly will mark subsequent elements.
+- C-c @ : Mark the subtree at point. Hitting repeatedly will mark subsequent subtrees.
+- C-c C-x C-w : Kill subtree, but save in kill ring. With a numeric prefix argument N, kill N sequential subtrees.
+- C-c C-x M-w : Copy subtree to kill ring. With a numeric prefix argument N, copy the N sequential subtrees.
+- C-c C-x C-y : Yank subtree from kill ring. 
+- C-y : The same command as C-c C-x C-y. 
+- C-c C-x c : Clone a subtree by making a number of sibling copies of it.
+- C-c C-w : Refile entry or region to a different location.
+- C-c ^ o : Sort same-level entries. 
+- C-x n s : Narrow buffer to current subtree.
+- C-x n b : Narrow buffer to current block.
+- C-x n w : Widen buffer to remove narrowing.
+- C-c * : Turn a normal line or plain list item into a headline.
+
+**  Sparse trees
+
+**  Plain lists
+**  Drawers
+**  Blocks
+**  Footnotes
+**  The Orgstruct minor mode
+**  Org syntax
+
+* Tables
+**  The built-in table editor
+**  Column width and alignment
+**  Column groups
+**  The Orgtbl minor mode
+**  The spreadsheet
+*** References
+*** Formula syntax for Calc
+*** Emacs Lisp forms as formulas
+*** Durations and time values
+*** Field and range formulas
+*** Column formulas
+*** Lookup functions
+*** Editing and debugging formulas
+*** Updating the table
+*** 10 Advanced features
+**  Org-Plot
+
+* Hyperlinks
+**  Link format
+**  Internal links
+*** Radio targets
+**  External links
+**  Handling links
+**  Using links outside Org
+**  Link abbreviations
+**  Search options in file links
+**  Custom Searches
+* TODO items
+**  Basic TODO functionality
+**  Extended use of TODO keywords
+*** TODO keywords as workflow states
+*** TODO keywords as types
+*** Multiple keyword sets in one file
+*** Fast access to TODO states
+*** Setting up keywords for individual files
+*** Faces for TODO keywords
+*** TODO dependencies
+**  Progress logging
+*** Closing items
+*** Tracking TODO state changes
+*** Tracking your habits
+**  Priorities
+**  Breaking tasks down into subtasks
+**  Checkboxes
+
+* Tags
+**  Tag inheritance
+**  Setting tags
+**  Tag groups
+**  Tag searches
+
+* Properties and columns
+**  Property syntax
+**  Special properties
+**  Property searches
+**  Property Inheritance
+**  Column view
+*** Defining columns
+**** Scope of column definitions
+**** Column attributes
+*** Using column view
+*** Capturing column view
+**  The Property API
+
+* Dates and times
+**  Timestamps, deadlines, and scheduling
+**  Creating timestamps
+*** The date/time prompt
+*** Custom time format
+**  Deadlines and scheduling
+*** Inserting deadlines or schedules
+*** Repeated tasks
+**  Clocking work time
+*** Clocking commands
+*** The clock table
+*** Resolving idle time and continuous clocking
+**  Effort estimates
+**  Taking notes with a relative timer
+**  Countdown timer
+
+* Capture - Refile - Archive
+**  Capture
+*** Setting up capture
+*** Using capture
+*** Capture templates
+**** Template elements
+**** Template expansion
+**** Templates in contexts
+**  Attachments
+**  RSS feeds
+**  Protocols for external access
+**  Refile and copy
+**  Archiving
+*** Moving a tree to the archive file
+*** Internal archiving
+
+* Agenda views
+**  Agenda files
+**  The agenda dispatcher
+**  The built-in agenda views
+*** The weekly/daily agenda
+*** The global TODO list
+*** Matching tags and properties
+*** Timeline for a single file
+*** Search view
+*** Stuck projects
+**  Presentation and sorting
+*** Categories
+*** Time-of-day specifications
+*** Sorting agenda items
+*** Filtering/limiting agenda items
+**  Commands in the agenda buffer
+**  Custom agenda views
+*** Storing searches
+*** Block agenda
+*** Setting options for custom commands
+**  Exporting Agenda Views
+**  Using column view in the agenda
+
+* Markup for rich export
+**  Structural markup elements
+**  Images and Tables
+**  Literal examples
+**  Include files
+**  Index entries
+**  Macro replacement
+**  Embedded LATEX
+*** Special symbols
+*** Subscripts and superscripts
+*** LATEX fragments
+*** Previewing LATEX fragments
+*** Using CDLATEX to enter math
+**  Special blocks
+
+* Exporting
+**  The Export Dispatcher
+**  Export back-ends
+**  Export settings
+**  ASCII/Latin-1/UTF-8 export
+**  Beamer export
+**  HTML export
+*** HTML export commands
+*** HTML preamble and postamble
+*** Quoting HTML tags
+*** Links in HTML export
+*** Tables
+*** Images in HTML export
+*** Math formatting in HTML export
+*** Text areas in HTML export
+*** CSS support
+*** 10 JavaScript supported display of web pages
+**  LATEX and PDF export
+*** LATEX export commands
+*** Header and sectioning structure
+*** Quoting LATEX code
+*** LATEX specific attributes
+**  Markdown export
+**  OpenDocument Text export
+*** Pre-requisites for ODT export
+*** ODT export commands
+*** Extending ODT export
+**** Automatically exporting to other formats
+**** Converting between document formats
+*** Applying custom styles
+**** Applying custom styles the easy way
+**** Using third-party styles and templates
+*** Links in ODT export
+*** Tables in ODT export
+*** Images in ODT export
+*** Math formatting in ODT export
+**** Working with LATEX math snippets
+**** Working with MathML or OpenDocument formula files
+*** Labels and captions in ODT export
+**** Literal examples in ODT export
+**** Advanced topics in ODT export
+***** Configuring a document converter
+***** Working with OpenDocument style files
+***** Creating one-off styles
+***** Customizing tables in ODT export
+***** Validating OpenDocument XML
+**  iCalendar export
+**  Other built-in back-ends
+**  Export in foreign buffers
+**  Advanced configuration
+
+* Publishing
+**  Configuration
+*** The variable org-publish-project-alist
+*** Sources and destinations for files
+*** Selecting files
+*** Publishing action
+*** Options for the exporters
+*** Links between published files
+*** Generating a sitemap
+*** Generating an index
+**  Uploading files
+**  Sample configuration
+*** Example simple publishing configuration
+*** Example complex publishing configuration
+**  Triggering publication
+
+* Working with source code
+**  Structure of code blocks
+**  Editing source code
+**  Exporting code blocks
+**  Extracting source code
+**  Evaluating code blocks
+**  Library of Babel
+**  Languages
+**  Header arguments
+*** Using header arguments
+*** Specific header arguments
+**** var
+**** results
+**** file
+**** file-desc
+**** dir and remote execution
+**** exports
+**** tangle
+**** mkdirp
+**** comments
+****padline
+**** no-expand
+**** session
+**** noweb
+**** noweb-ref
+**** noweb-sep
+**** cache
+**** sep
+**** hlines
+**** colnames
+**** rownames
+**** shebang
+**** eval
+**** wrap
+**** post
+**  Results of evaluation
+*** Non-session
+**** results value
+**** results output
+*** Session
+**** results value
+**** results output
+**  Noweb reference syntax
+**  Key bindings and useful functions
+**  Batch execution
+
+* Miscellaneous
+**  Completion
+**  Easy Templates
+**  Speed keys
+**  Code evaluation and security issues
+**  Customization
+**  Summary of in-buffer settings
+**  The very busy C-c C-c key
+**  A cleaner outline view
+**  Using Org on a tty
+**  Interaction with other packages
+*** Packages that Org cooperates with
+*** Packages that lead to conflicts with Org mode
+**  org-crypt.el
