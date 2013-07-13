@@ -50,3 +50,15 @@ git push
 git pull 
 更新网上代码仓库
 
+D:\Github\book\org-mode>git add git_tips
+
+D:\Github\book\org-mode>git commit "Use Githut"
+error: pathspec 'Use Githut' did not match any file(s) known to git.
+
+D:\Github\book\org-mode>git commit -m "Use Githut"
+[master 9d391cf] Use Githut
+ 2 files changed, 266 insertions(+)
+ create mode 100644 git_tips/Tip1.txt
+ create mode 100644 git_tips/Tip2.txt
+
+D:\Github\book\org-mode>git push
