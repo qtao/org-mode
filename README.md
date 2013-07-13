@@ -1,6 +1,6 @@
-org-mode
+﻿org-mode
 ========
 
 org-mode notes
 
-����ORGѧϰɢ�ǡ�
+我是ORG学习散记。
