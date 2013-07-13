@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Emacs config file for Octopress blog - Statistics Notes</title>
+  <meta name="author" content="Hill Tao">
+
+  
+  <meta name="description" content="The contents of .emacs file. This is Emacs ;;-----------------------------------------------------------------------------
+;; Emacs config &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://taohill.github.io/blog/2013-07-12-emacs-config-file-for-octopress-blog.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Statistics Notes" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Statistics Notes</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:taohill.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Emacs Config File for Octopress Blog</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T00:00:00+08:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">The contents of .emacs file.</h2>
+<div class="outline-text-2" id="text-1">
+
+<div id="fig:emacs_logo" class="figure">
+<p><img src="./images/emacs.png" width="100px" alt="emacs.png"/></p>
+<p>This is Emacs</p>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-org">;;-----------------------------------------------------------------------------
+;; Emacs config
+;; ------------
+;; Date: 2012.10.30
+;; When Emacs is started, it normally tries to load a Lisp program from an initialization file, 
+;; using the filenames ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el; 
+;;
+;; There can also be a default init file, which is the library named default.el, 
+;; If this library exists, it is loaded whenever you start Emacs (except when you specify ??-q?&#161;&#165;). 
+;; But your init file, if any, is loaded first; if it sets inhibit-default-init non-nil, 
+;; then default is not loaded. 
+;; 
+;; Your site may also have a site startup file; this is named site-start.el, 
+;; if it exists. Like default.el.
+;; Emacs loads this library before it loads your init file. 
+;; To inhibit loading of this library, use the option ??--no-site-file?&#161;&#165;. 
+;; We recommend against using site-start.el for changes that some users may not like. 
+;; It is better to put them in default.el, so that users can more easily override them. 
+;; 
+;;-----------------------------------------------------------------------------
+
+(setq initial-major-mode 'text-mode)
+(global-font-lock-mode t)
+(fset 'yes-or-no-p 'y-or-n-p)
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(transient-mark-mode t)
+(setq x-select-enable-clipboard t)
+
+;;;
+;;; Use Aspell for spell checking
+;;;
+(setq-default ispell-program-name "D:/Emacs/aspell/bin/aspell.exe")
+
+;; RORG-MODE 
+;; Org - Babel: Configure active languages
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)
+   (emacs-lisp . nil)
+   ))
+
+;;;
+;;; AUCTeX
+;;;
+;; We assume that MiKTeX (<span style="color: #00ffff; text-decoration: underline;">http://www.miktek.org</span>) is used for
+;; TeX/LaTeX. Otherwise, change the (require ...) line as per the
+;; AUCTeX documentation.
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+(require 'tex-mik)
+
+;;; ESS
+;;;
+;; Load ESS and activate the nifty feature showing function arguments
+;; in the minibuffer until the call is closed with ')'.
+(require 'ess-site)
+
+;; Path to R executable.
+(setq-default inferior-R-program-name
+              "D:/R/bin/i386/rterm.exe")
+
+(setq default-fill-column 80)
+(tool-bar-mode nil)
+(set-default-font "Courier New-14")
+
+;;;
+;;; Chinese
+;;;
+(setq locale-coding-system 'euc-cn)
+(set-keyboard-coding-system 'euc-cn)
+(set-buffer-file-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;;-----------------------------------------------------------------------------
+;; color themes
+;; ------------
+;; Source: <span style="color: #00ffff; text-decoration: underline;">http://www.emacswiki.org/cgi-bin/wiki/ColorTheme</span>
+;; Usage:  M-x color-theme-select RET
+;;-----------------------------------------------------------------------------
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-hober)
+;;; billw, black, dark-laptop, hober, lethe, taylor, tty-dark
+
+;; load htmlize.el , which org-babel export syntax highlight source code need it
+(require 'htmlize)
+
+
+;; #+LATEX_HEADER: \usepackage[UTF8,noindent]{ctex}
+(setq texcmd "xelatex %f")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-echo-area-message t)
+ '(inhibit-startup-screen t)
+ '(display-time-mode t)
+ '(show-paren-mode t)
+ '(transient-mark-mode (quote (only . t)))
+ '(ess-R-font-lock-keywords (quote ((ess-R-fl-keyword:modifiers . t) 
+    (ess-R-fl-keyword:fun-defs . t) 
+    (ess-R-fl-keyword:keywords . t) 
+    (ess-R-fl-keyword:assign-ops . t) 
+    (ess-R-fl-keyword:constants . t) 
+    (ess-fl-keyword:fun-calls . t) 
+    (ess-fl-keyword:numbers . t) 
+    (ess-fl-keyword:operators . t) 
+    (ess-fl-keyword:delimiters . t) 
+    (ess-fl-keyword:= . t) (ess-R-fl-keyword:F&amp;T . t))))
+ '(inferior-R-args "--no-restore-history --no-save ")
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(require 'ctable)
+(require 'orglue)
+
+(require 'org-octopress)
+  (setq org-octopress-directory-top       "D:/Github/octopress/source")
+  (setq org-octopress-directory-posts     "D:/Github/octopress/source/_posts")
+  (setq org-octopress-directory-org-top   "D:/Github/octopress/source")
+  (setq org-octopress-directory-org-posts "D:/Github/octopress/source/blog")
+  (setq org-octopress-setup-file          "D:/Github/octopress/setupfile.org")
+</pre>
+</div>
+
+
+<p>
+<!-- more -->
+</p>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Hill Tao</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T00:00:00+08:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013-06-15-equation-problems-office-2013.html" title="Previous Post: Equation Problems Office 2013">&laquo; Equation Problems Office 2013</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013-07-12-r-plot-demo_01.html" title="Next Post: R plot demo_01">R plot demo_01 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013-07-12-r-plot-demo_01.html">R Plot Demo_01</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-07-12-emacs-config-file-for-octopress-blog.html">Emacs Config File for Octopress Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-06-15-equation-problems-office-2013.html">Equation Problems Office 2013</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-06-13-change-ssh-keys.html">Change SSH Keys</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-06-12-fatal-remote-origin-already-exists.html">Fatal: Remote Origin Already Exists</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Hill Tao -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

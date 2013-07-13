@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>R plot demo_01 - Statistics Notes</title>
+  <meta name="author" content="Hill Tao">
+
+  
+  <meta name="description" content="A simple scatter plot Plots get a little more complicated. First we make something to plot
+(simulated regression data). n &lt;- 50
+x &lt;- seq(1, n &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://taohill.github.io/blog/2013-07-12-r-plot-demo_01.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Statistics Notes" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Statistics Notes</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:taohill.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">R Plot Demo_01</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T00:00:00+08:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">A simple scatter plot</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Plots get a little more complicated.  First we make something to plot
+(simulated regression data).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-R" id="reg">n <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">50</span>
+x <span style="color: #00ff00;">&lt;-</span> <span style="color: #ffaa00;">seq</span><span style="color: #ffaa00;">(</span><span style="color: #ff7f50;">1</span>, n<span style="color: #ffaa00;">)</span>
+a.true <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">3</span>
+b.true <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">1.5</span>
+y.true <span style="color: #00ff00;">&lt;-</span> a.true <span style="color: #00ff00;">+</span> b.true * x
+s.true <span style="color: #00ff00;">&lt;-</span> <span style="color: #ff7f50;">17.3</span>
+<span style="color: #ffaa00;">set.seed</span><span style="color: #ffaa00;">(</span><span style="color: #ff7f50;">987</span><span style="color: #ffaa00;">)</span>
+y <span style="color: #00ff00;">&lt;-</span> y.true <span style="color: #00ff00;">+</span> s.true * <span style="color: #ffaa00;">rnorm</span><span style="color: #ffaa00;">(</span>n<span style="color: #ffaa00;">)</span>
+out1 <span style="color: #00ff00;">&lt;-</span> <span style="color: #ffaa00;">lm</span><span style="color: #ffaa00;">(</span>y ~ x<span style="color: #ffaa00;">)</span>
+<span style="color: #ffaa00;">summary</span><span style="color: #ffaa00;">(</span>out1<span style="color: #ffaa00;">)</span>
+</pre>
+</div>
+<p>
+(for once we won&#8217;t show the code chunk itself, look at <code>foo.org</code> if
+you want to see what the actual code chunk was).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-R"><span style="color: #ffaa00;">plot</span><span style="color: #ffaa00;">(</span>x, y, pch<span style="color: #00ff00;">=</span><span style="color: #ff7f50;">19</span>, col<span style="color: #00ff00;">=</span><span style="color: #ffff00;">"green4"</span><span style="color: #ffaa00;">)</span>
+<span style="color: #ffaa00;">abline</span><span style="color: #ffaa00;">(</span>out1, lwd<span style="color: #00ff00;">=</span><span style="color: #ff7f50;">2</span>, col<span style="color: #00ff00;">=</span><span style="color: #ffff00;">"red4"</span><span style="color: #ffaa00;">)</span>
+</pre>
+</div>
+
+
+<div id="fig:hist_01" class="figure">
+<p><img src="./images/fig1.png" width="400px" alt="fig1.png"/></p>
+<p>A scatter plot</p>
+</div>
+
+<p>
+<!-- more -->
+</p>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Hill Tao</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T00:00:00+08:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013-07-12-emacs-config-file-for-octopress-blog.html" title="Previous Post: Emacs config file for Octopress blog">&laquo; Emacs config file for Octopress blog</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013-07-12-r-plot-demo_01.html">R Plot Demo_01</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-07-12-emacs-config-file-for-octopress-blog.html">Emacs Config File for Octopress Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-06-15-equation-problems-office-2013.html">Equation Problems Office 2013</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-06-13-change-ssh-keys.html">Change SSH Keys</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013-06-12-fatal-remote-origin-already-exists.html">Fatal: Remote Origin Already Exists</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Hill Tao -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

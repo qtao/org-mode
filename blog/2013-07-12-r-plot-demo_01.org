@@ -1,0 +1,41 @@
+#+TITLE: R plot demo_01
+#+DATE: 2013-07-12
+#+SETUPFILE: D:/Github/taohill/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: 
+#+JEKYLL_PUBLISHED: true
+#+PROPERTY: session *R*
+#+PROPERTY: results silent
+
+* A simple scatter plot
+
+Plots get a little more complicated.  First we make something to plot
+(simulated regression data).
+
+#+name: reg
+#+begin_src R :results output :exports both
+  n <- 50
+  x <- seq(1, n)
+  a.true <- 3
+  b.true <- 1.5
+  y.true <- a.true + b.true * x
+  s.true <- 17.3
+  set.seed(987)
+  y <- y.true + s.true * rnorm(n)
+  out1 <- lm(y ~ x)
+  summary(out1)
+#+end_src
+(for once we won't show the code chunk itself, look at =foo.org= if
+you want to see what the actual code chunk was).
+
+#+begin_src R :results graphics :noweb yes :file D:/Github/taohill/source/images/fig1.png :exports both
+  plot(x, y, pch=19, col="green4")
+  abline(out1, lwd=2, col="red4")
+#+end_src
+
+#+CAPTION: A scatter plot
+#+LABEL: fig:hist_01
+#+attr_html: :width 400px
+[[file:./images/fig1.png]]
+
+{{{more}}}
