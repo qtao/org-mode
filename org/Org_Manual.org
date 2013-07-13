@@ -1,6 +1,6 @@
 #+Title: The Org Manul
-#+Author: Qiushan Tao
-#+Email: qtao@bjmu.edu.cn
+#+Author: Tao
+#+Email: q@tao.com
 
 * Introduction
 **  Summary
